@@ -158,7 +158,8 @@ graph TD
 ```
 
 ### 5. Программа
-      ```java
+
+```javascript
                 import java.io.PrintStream;
                 import java.util.Scanner;
                 public class Main {
@@ -236,7 +237,8 @@ graph TD
                         }
          
       
-        ```
+```
+        
 
 ### 6. Анализ правильности решения
 
