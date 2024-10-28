@@ -124,12 +124,16 @@ or z<= min or z>=max }
     q -- Да ---> w{w>x}
     w -- Да ---> e{y>z}
     e -- Да ---> r{w>z}
-    r -- Да ---> t[/Ввести: z /]
+    r -- Да ---> t{z>x}
+    t -- Да ---> tt[/Ввести: z /]
+    t-- Нет --> ttt[/Ввести: x/]
     r -- Нет --> u[/Ввести: w/]
     e -- Нет --> i[/Ввести: w/]
     w -- Нет --> o{y>z}
     o -- Да ---> p{x>z}
-    p -- Да ---> a[/Ввести: z /]
+    p -- Да ---> a{z>w}
+    a -- Да ---> aa[/Ввести: z /]
+    a -- Нет --> aaa[/Ввести: w/]
     p -- Нет --> s[/Ввести: x/]
     e -- Нет --> d[/Ввести: x/]
     q -- Нет --> f{z>w}
@@ -149,10 +153,12 @@ or z<= min or z>=max }
     D ---> Z
     V ---> Z
     N ---> Z
-    t ---> Z
+    tt ---> Z
+    ttt---> Z
     u ---> Z
     i ---> Z
-    a ---> Z
+    aa ---> Z
+    aaa ---> Z
     s ---> Z
     d ---> Z
     g ---> Z
@@ -193,68 +199,117 @@ public class Main {
 
         //рассматриваем первый случай - x>y
         if (x>y)
-            //начинаем проверку остальных условий
+            //начинаем проверку остальных условий,сейчас у нас есть варианты xywz/xyzw/xwyz/xwzy/xzyw/xzwy/zxwy/zxyw/zwxy/wzxy/wxyz/wxzy
             if (y>w)
+              //далее в комментариях будут написаны варианты,которые предполагаются на данном моменте. xywz/xyzw/xzyw/zxyw
                 if (w>z)
+                //xyWz
                     out.print(w);
                 else
+                // xyzw/xzyw/zxyw
                     if (y>z)
+                    //xyZw
                         out.print(z);
                     else
+                      //xzYw/zxYw
                         out.print(y);
             else
+            //xwyz/xwzy/xzwy/zxwy/zwxy/wzxy
                 if (x>w)
+                  //xwyz/xwzy/xzwy/zxwy
                     if (x>z)
+                     //xwyz/xwzy/xzwy
                         if (w>z)
+                      //xwyz/xwzy
                             if (z>y)
+                              //xwZy
                                 out.print(z);
                             else
+                             //xwYz 
                                 out.print(y);
                         else
+                          //xzWy
                             out.print(w);
                     else
+                  //zxWy
                         out.print(w);
                 else
+                  //zwxy/wzxy/wzxy
                     if (z>w)
+                     //zwXy
                         out.print(x);
                     else
-                        if (z>x)
+                    ///wzxy/wxzy/wxyz
+                      if (z>x)
+                      //wzXy
                             out.print(x);
                         else
+                          //wxzy/wxyz
                             if (z>y)
+                             //wxZy 
                                 out.print(z);
                             else
+                                //wxyz
                                 out.print(y);
         //Рассматриваем второй случай - x<y
         else
+          //yxwz/yxzw/ywxz/ywzx/yzxw/yzwx/zywx/zyxw/zwyx/wzyx/wyxz/wyzx
             //начинаем проверку остальных условий
             if (y>w)
+          //yxwz/yxzw/ywxz/ywzx/yzxw/yzwx/zywx/zyxw
                 if (w>x)
+                    //ywxz/ywzx/yzwx/zywx
                     if (y>z)
+                        //ywxz/ywzx/yzwx
                         if (w>z)
-                            out.print(z);
+                          //ywxz/ywzx
+                            if (z>x)
+                              //ywZx
+                              out.print(z);
+                            else
+                            //ywXz
+                              out.print(x);
                         else
+                        //yzWx
                             out.print(w);
                     else
+                      //zyWx
                         out.print(w);
                 else
+                //yxwz/yxzw/yzxw/zyxw
                     if (y>z)
+                    //yxwz/yxzw/yzxw
                         if (x>z)
-                            out.print(z);
+                        //yxwz/yxzw
+                           if (z>w)
+                              //yxZw
+                              out.print(z);
+                           else
+                            //yxWz
+                            out.print(w);   
                         else
+                        //yzXw
                             out.print(x);
                     else
+                    //zyXw
                         out.print(x);
             else
+            //zwyx/wzyx/wyxz/wyzx
                 if (z>w)
+                  //zwYx
                     out.print(y);
                 else
+                  //wzyx/wyxz/wyzx
                     if (z>y)
+                    //wzYx
                         out.print(y);
                     else
+                      //wyxz/wyzx
                         if (z>x)
+                          //wyZx
                             out.print(z);
                         else
+                          //wyXz
                             out.print(x);
 
 
